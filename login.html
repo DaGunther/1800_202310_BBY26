@@ -17,17 +17,11 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
   </script>
-  <!-- Other libraries go here -->
-  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-  <!-------------------------------------------------------->
-  <!-- Firebase 8 Library related CSS, JS, JQuery go here -->
-  <!-------------------------------------------------------->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-------------------------------------------------------->
+    <!-- Firebase 8 Library related CSS, JS, JQuery go here -->
+    <!-------------------------------------------------------->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
@@ -37,10 +31,12 @@
       rel="stylesheet"
       href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css"
     />
+  <!-- Other libraries go here -->
 
   <!-- Link to styles of your own -->
   <link href="styles/style.css" rel="stylesheet" type="text/css">
-  <link href="styles/main.css" rel="stylesheet" type="text/css">
+  <link href="styles/login.css" rel="stylesheet" type="text/css">
+
 </head>
 
 <body>
@@ -74,10 +70,6 @@
               <li><a class="dropdown-item" href="#">Hot 100</a></li>
             </ul>
           </li>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="index.html">Sign Out</a>
-        </li>
 
         </ul>
         <form class="d-flex" role="search">
@@ -87,27 +79,24 @@
       </div>
     </div>
   </nav>
-  
-  <div id="welcome">
-    <h1 class="display-4">Get ready to be #DRIPPED! <span id="name-goes-here"></span></p>
+  <div id="logo">
+    <img src="DripLogo.png" height="500px" width="500px">
   </div>
-  <main>
-
-      <div :class="display">
-          <div class="frontFace">
-              <h1 v-show="show">Trying to get your location...</h1>
-            </div>
-            <div class="backFace">
-                <i :class="weatherIcons"></i>
-                <h1>{{ weather }}</h1>
-                <h2>{{ animateTemp }}{{ temp.unit }}</h2>
-                <small @click="C2F">Deg. F <span>&harr;</span> Deg. C</small>
-                <h4>Location: <strong>{{ cityName }}, {{ country }}</strong>.</h4>
-            </div>
-        </div>
+  <div id="welcome">
+    <h1 class="display-4">Login Here!</h1>
+    <div id="firebaseui-auth-container"></div>
+      <div id="loader">Loading...</div>
+    </div>
     
-        
+    
+
+
+
+    <main>
+
+    
     </main>
+
   <div class="footer">
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
       <p class="col-md-4 mb-0 text-muted">&copy; 2023 Drip App</p>
@@ -132,12 +121,12 @@
   <!---------------------------------------------->
   <!-- Your own JavaScript functions go here    -->
   <!---------------------------------------------->
-
-  <!-- Link to scripts of your own -->
-  <!-- <script src="./scripts/script.js"></script> -->
-  <script src="scripts/WeatherAPI.js"></script>
+  
+  <!-- Link to scripts of your own -->  
   <script src="scripts/firebaseAPI_TEAMBBY26.js"></script>
-  <script src="scripts/main.js"></script>
+  <script src="scripts/authentication.js"></script>
+
+  <!-- <script src="./scripts/script.js"></script> -->
 
 </body>
 
