@@ -43,8 +43,7 @@ body {
 .footer {
     grid-area: footer;
     /* display: flex; */
-    align-content: center;
-    justify-content: center;
+    margin-top: auto;
 }
 
 #logo {
@@ -52,4 +51,8 @@ body {
     display: flex;
     align-content: center;
     justify-content: center;
+}
+#login_button   {
+    color: aliceblue;
+    text-decoration: none;
 }
