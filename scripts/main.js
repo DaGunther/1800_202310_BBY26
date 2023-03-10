@@ -20,7 +20,7 @@ insertNameFromFirestore();
 // Input parameter is a string representing the collection we are reading from
 //------------------------------------------------------------------------------
 function displayCardsDynamically(collection) {
-  let cardTemplate = document.getElementById("profileCardTemplate");
+  let cardTemplate = document.getElementById(id="profileCardTemplate");
 
   db.collection(collection).get()   //the collection called "hikes"
       .then(userProfiles=> {

@@ -40,6 +40,13 @@ body {
         "footer footer footer footer footer";
 } */
 
+.card_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
 .navbar {
     grid-area: nav;
     display: flex;

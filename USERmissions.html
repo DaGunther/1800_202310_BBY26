@@ -76,28 +76,55 @@
   <div class="main_container">
     <h1>User Submissions</h1>
     <!-- Here is the container for cards  -->
-    <div class="container">
-        <div id="-go-here" class="row row-cols-auto">
+    <div class="card_container">
+      <div class="card" style="width: 18rem;" id="profileCardTemplate">
+        <img src="images/chengman.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"><span placeholder="Name" id="card_title"></h5>
+          <p class="card-text"></span>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         </div>
-    </div>
-</div>
-
-<!-- Templates for general use, not displayed -->
-<template id="profileCardTemplate">
-<div class="card py-2 mx-2" style="width: 18rem">
-    <img class="card-image card-img-top" src=" ..." alt="..." />
-    <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-length">placeholder</p>
-        <br />
-        <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-        </p>
-        <a class="btn btn-primary card-href">Read more ...</a>
-    </div>
-</div>
-</template>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">An item</li>
+          <li class="list-group-item">A second item</li>
+          <li class="list-group-item">A third item</li>
+        </ul>
+        <div class="card-body">
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+      </div>
+      <div class="card" style="width: 18rem;" id="profileCardTemplate">
+        <img src="images/chonny.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">An item</li>
+          <li class="list-group-item">A second item</li>
+          <li class="list-group-item">A third item</li>
+        </ul>
+        <div class="card-body">
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+      </div>
+      <div class="card" style="width: 18rem;" id="profileCardTemplate"> 
+        <img src="images/PeterChao.jpeg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">An item</li>
+          <li class="list-group-item">A second item</li>
+          <li class="list-group-item">A third item</li>
+        </ul>
+        <div class="card-body">
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+      </div>
 
   <footer class="footer fixed-bottom">
     <div class="container d-flex flex-wrap justify-content-between align-items-center py-3 my-4  border-top">
@@ -126,8 +153,8 @@
   <!---------------------------------------------->
 
   <!-- Link to scripts of your own -->
-  <script src="scripts/main.js"></script>
   <script src="scripts/firebaseAPI_TEAMBBY26.js"></script>
+  <script src="scripts/USERmissions.js"></script>
   <!-- <script src="./scripts/script.js"></script> -->
 
 </body>
