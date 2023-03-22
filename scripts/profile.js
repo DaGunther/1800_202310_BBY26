@@ -51,3 +51,23 @@ function insertAboutFromFirestore() {
 
 }
 insertAboutFromFirestore();
+
+function insertPicFromFirestore() {
+    //check if user is logged in
+    firebase.auth().onAuthStateChanged( user => {
+        if ( user ) { //if user logged in
+            console.log( user.uid )
+            db.collection( "users" ).doc( user.uid ).get().then( userDoc => {
+                console.log( userDoc.data().profilePic )
+                userAbout = userDoc.data().profilePic;
+                console.log( userAbout )
+                let picUrl = userDoc.data().profilePic;
+                $("#mypic-goes-here").attr("src", picUrl);
+
+            } )
+        }
+    } )
+
+}
+
+insertPicFromFirestore();
