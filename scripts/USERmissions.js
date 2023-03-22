@@ -1,5 +1,5 @@
 // Get a reference to the "userProfile" collection in the database
-var userProfileRef = firebase.firestore().collection("userProfile");
+var userProfileRef = firebase.firestore().collection("users");
 
 // Call the "name" field from the "CPFlOFK1HpQe40v53VHX" document in the collection
 userProfileRef.doc("CPFlOFK1HpQe40v53VHX").get().then(function(doc) {

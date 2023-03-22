@@ -23,6 +23,7 @@
   <!-------------------------------------------------------->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
@@ -52,8 +53,7 @@
             <a class="nav-link" href="#">DRIPssociates</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               User Submissions
             </a>
             <ul class="dropdown-menu">
@@ -76,60 +76,70 @@
     <!-- Enter your contents here -->
     <div class="container rounded bg-white mt-5">
       <div class="row">
-          <div class="col-md-4 border-right">
-              <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp"
-                    alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
-                    style="width: 150px; z-index: 1">
-                <span class="font-weight-bold" id="name-goes-here"></span>
-                <span class="text-black-50" id="email-goes-here"></span>
-                <span id="country"></span>
-              </div>
-          </div>
-          <div class="col-md-8">
-              <div class="p-3 py-5">
-                  <div class="d-flex justify-content-between align-items-center mb-3">
-                      <div class="d-flex flex-row align-items-center back"><i class="fa fa-long-arrow-left mr-1 mb-1"></i>
-                        <a href="main.html" style="text-decoration: none; color: black;">
-                          <h6>Back to home</h6>
-                        </a>  
-                      </div>
-                      
-                      <a href="profile.html" style="text-decoration: none; color: black;">
-                        <h6 class="text-right">Back to Profile</h6>
-                      </a>
-                      
-                  </div>
-                  <form>
-                    <fieldset id="personalInforFields">
+        <div class="col-md-4 border-right">
+          <div class="d-flex flex-column align-items-center text-center p-3 py-5">
 
-                      
-                      <div class="row mt-2">
-                        <div class="col-md-6"><input type="text" class="form-control" placeholder="Name" id="nameInput"></div>
-                        <div class="col-md-6"><input type="text" class="form-control" placeholder="Gender" id="genderInput"></div>
-                      </div>
-                      <div class="row mt-3">
-                        <div class="col-md-6"><input type="text" class="form-control" placeholder="Email" id="emailInput"></div>
-                        <div class="col-md-6"><input type="text" class="form-control" placeholder="Phone number" id="phoneInput"></div>
-                      </div>
-                      <div class="row mt-3">
-                        <div class="col-md-6"><input type="text" class="form-control" placeholder="City" id="cityInput"></div>
-                        <div class="col-md-6"><input type="text" class="form-control" placeholder="Country" id="countryInput"></div>
-                      </div>
-                      <div class="row mt-3">
-                        <div class="col-md-6"><input type="text" class="form-control" placeholder="Height" id="heightInput"></div>
-                        <div class="col-md-6"><input type="text" class="form-control" placeholder="Age" id="ageInput"></div>
-                      </div>
-                      
-                    </fieldset>
-            
-                      <div class="mt-5 text-right"><button class="btn btn-primary profile-button" type="button" onclick="saveUserInfo()">Save Profile</button></div>
-                    
-                  </form>
-              </div>
+            <div class="container text-center py-3">
+              <img id="mypic-goes-here" src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp"
+                alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
+                style="width: 150px; z-index: 1">
+              <input type="file" id="mypic-input" accept="image/*" />
+            </div>
+            <span class="font-weight-bold" id="name-goes-here"></span>
+            <span class="text-black-50" id="email-goes-here"></span>
+            <span id="country"></span>
           </div>
+        </div>
+        <div class="col-md-8">
+          <div class="p-3 py-5">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <div class="d-flex flex-row align-items-center back"><i class="fa fa-long-arrow-left mr-1 mb-1"></i>
+                <a href="main.html" style="text-decoration: none; color: black;">
+                  <h6>Back to home</h6>
+                </a>
+              </div>
+
+              <a href="profile.html" style="text-decoration: none; color: black;">
+                <h6 class="text-right">Back to Profile</h6>
+              </a>
+
+            </div>
+            <form>
+              <fieldset id="personalInforFields">
+
+
+                <div class="row mt-2">
+                  <div class="col-md-6"><input type="text" class="form-control" placeholder="Name" id="nameInput"></div>
+                  <div class="col-md-6"><input type="text" class="form-control" placeholder="Gender" id="genderInput">
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col-md-6"><input type="text" class="form-control" placeholder="Email" id="emailInput">
+                  </div>
+                  <div class="col-md-6"><input type="text" class="form-control" placeholder="Phone number"
+                      id="phoneInput"></div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col-md-6"><input type="text" class="form-control" placeholder="City" id="cityInput"></div>
+                  <div class="col-md-6"><input type="text" class="form-control" placeholder="Country" id="countryInput">
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col-md-6"><input type="text" class="form-control" placeholder="Height" id="heightInput">
+                  </div>
+                  <div class="col-md-6"><input type="text" class="form-control" placeholder="Age" id="ageInput"></div>
+                </div>
+
+              </fieldset>
+
+              <div class="mt-5 text-right"><button class="btn btn-primary profile-button" type="button"
+                  onclick="saveUserInfo()">Save Profile</button></div>
+
+            </form>
+          </div>
+        </div>
       </div>
-  </div>
+    </div>
   </main>
 
   <footer class="footer fixed-bottom border-top">
