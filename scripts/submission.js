@@ -62,3 +62,16 @@ function uploadPic(postDocID) {
             console.log("error uploading to cloud storage");
         })
 }
+
+function saveNewPostID(userUID, postDocID){
+    db.collection("users")
+             .doc(userUID)
+             .update({
+                 posts: firebase.firestore.FieldValue.arrayUnion(postDocID)
+             })
+             .then(() =>
+                 console.log("Saved to user's document!"))
+             .catch((error) => {
+                 console.error("Error writing document: ", error);
+             });
+}
