@@ -23,6 +23,7 @@ body {
     justify-content: center;
     flex-direction: column;
 }
+
 /* 
 .main_container {
     background-image: url(https://images.unsplash.com/photo-1587701712213-826b561028f7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1942&q=80);
@@ -42,12 +43,38 @@ body {
 
 .card_container {
     display: flex;
-    align-items:stretch;
+    align-items: stretch;
     justify-content: center;
     flex-direction: row;
 }
+
 .card {
     margin: 25px;
+}
+
+#DRIPssociate_cards {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    flex-direction: row;
+}
+
+a:link {
+    color: gray;
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    color: aliceblue;
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
 }
 
 .navbar {
@@ -71,11 +98,13 @@ body {
     justify-content: center;
     margin-bottom: 40px;
 }
+
 #logo img {
     max-width: 500px;
     max-height: 30vh;
 }
-#login_button   {
+
+#login_button {
     color: aliceblue;
     text-decoration: none;
 }
