@@ -32,16 +32,16 @@ function showMyFits() {
 // from the post document extracted (name, description, image)
 //------------------------------------------------------------
 function displayMyFits(doc) {
-        //var title = doc.data().name; // get value of the "name" key
-        //var desc = doc.data().description; //gets the length field
+        var name = doc.data().name; // get value of the "name" key
+        var description = doc.data().description; //gets the length field
         var image = doc.data().imageUrls; //the field that contains the URL 
 
         //clone the new card
         let newcard = document.getElementById("postCardTemplate").content.cloneNode(true);
         //populate with title, image
-        //newcard.querySelector('.card-title').innerHTML = title;
+        newcard.querySelector('.card-title').innerHTML = name;
         newcard.querySelector('.card-image').src = image;
-        //newcard.querySelector('.card-description').innerHTML = desc;
+        newcard.querySelector('.card-description').innerHTML = description;
         //append to the posts
         document.getElementById("fits-go-here").append(newcard);
 }
