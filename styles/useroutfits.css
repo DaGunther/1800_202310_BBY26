@@ -1,72 +1,106 @@
 /* Style for the container */
 .container {
-    max-width: 500px;
-    margin: auto;
-    padding: 20px;
-    background-color: transparent;
-    border-radius: 5px;
-  }
-  
-  /* Style for the form */
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  /* Style for the form-group */
-  .form-group {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  /* Style for the label */
-  label {
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-  
-  /* Style for the textarea */
-  textarea {
-    width: 100%;
-    padding: 10px;
-    border: transparent;
-    border-radius: 4px;
-    resize: vertical;
-  }
-  
-  /* Style for the container for the input file and the image */
-  .container.py-3 {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  /* Style for the image */
-  img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  /* Style for the button */
-  button {
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    background-color: #007bff;
-    color: #fff;
-    cursor: pointer;
-  }
-  
-  /* Style for the choose file button */
-  #mypic-input {
-    padding: 10px;
-    border-radius: 4px;
-    background-color: transparent;
-    cursor: pointer;
-  }
-  
+  max-width: 500px;
+  margin: auto;
+  padding: 20px;
+  background-color: transparent;
+  border-radius: 5px;
+}
+
+/* Style for the form */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Style for the form-group */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Style for the label */
+label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* Style for the textarea */
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: transparent;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+/* Style for the container for the input file and the image */
+.container.py-3 {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Style for the image */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Style for the button */
+button {
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Style for the choose file button */
+#mypic-input {
+  padding: 10px;
+  border-radius: 4px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+/* Style the label for the weather condition select box */
+label[for="weathercondition"] {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+/* Style the weather condition select box */
+#weathercondition {
+  font-size: 1rem;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  width: 100%;
+  max-width: 12rem;
+}
+
+/* Style the label for the warmth level select box */
+label[for="warmthlevel"] {
+  display: block;
+  font-weight: bold;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Style the warmth level select box */
+#warmthlevel {
+  font-size: 1rem;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  width: 100%;
+  max-width: 12rem;
+}

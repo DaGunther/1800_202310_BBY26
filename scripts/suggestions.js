@@ -35,16 +35,22 @@ function displayMyFits(doc) {
         var name = doc.data().name; // get value of the "name" key
         var description = doc.data().description; //gets the length field
         var image = doc.data().imageUrls; //the field that contains the URL 
+        var testField = doc.data().test;
 
-        //clone the new card
-        let newcard = document.getElementById("postCardTemplate").content.cloneNode(true);
-        //populate with title, image
-        newcard.querySelector('.card-title').innerHTML = name;
-        newcard.querySelector('.card-image').src = image;
-        newcard.querySelector('.card-description').innerHTML = description;
-        //append to the posts
-        document.getElementById("fits-go-here").append(newcard);
-}
+        if (testField === 'clear') {
+          // Clone the new card
+          let newcard = document.getElementById("postCardTemplate").content.cloneNode(true);
+          // Populate with title, image, and description
+          newcard.querySelector('.card-title').innerHTML = name;
+          newcard.querySelector('.card-image').src = image;
+          newcard.querySelector('.card-description').innerHTML = description;
+          // Append to the posts
+          document.getElementById("fits-go-here").append(newcard);
+        } else {
+          console.log('Test field value is not clear');
+          // Do something when test field value is not clear
+        }
+      }
 
 
 
