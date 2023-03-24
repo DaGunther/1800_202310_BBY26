@@ -30,6 +30,7 @@ function savePost() {
                 console.log("Post document added!");
                 console.log(doc.id);
                 uploadPic(doc.id);
+                alert("Submission Posted!");
             })
         } else {
             // No user is signed in.
