@@ -42,9 +42,12 @@ body {
 
 .card_container {
     display: flex;
-    align-items: center;
+    align-items:stretch;
     justify-content: center;
     flex-direction: row;
+}
+.card {
+    margin: 25px;
 }
 
 .navbar {
