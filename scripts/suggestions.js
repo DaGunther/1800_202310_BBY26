@@ -32,28 +32,37 @@ function showMyFits() {
 // from the post document extracted (name, description, image)
 //------------------------------------------------------------
 function displayMyFits(doc) {
-        var name = doc.data().name; // get value of the "name" key
-        var description = doc.data().description; //gets the length field
-        var image = doc.data().imageUrls; //the field that contains the URL 
-        var testField1 = doc.data().weathercondition;
-        console.log(testField1);
-        var testField2 = doc.data().warmthlevel;
-        console.log(testField2);
- 
-        if (testField1 === 'clear' && testField2 === 'warm') {
-          // Clone the new card
-          let newcard = document.getElementById("postCardTemplate").content.cloneNode(true);
-          // Populate with title, image, and description
-          newcard.querySelector('.card-title').innerHTML = name;
-          newcard.querySelector('.card-image').src = image;
-          newcard.querySelector('.card-description').innerHTML = description;
-          // Append to the posts
-          document.getElementById("fits-go-here").append(newcard);
-        } else {
-          console.log('Test field value is not clear');
-          // Do something when test field value is not clear
-        }
+  var name = doc.data().name;
+  var description = doc.data().description;
+  var testField1 = doc.data().weathercondition;
+  var testField2 = doc.data().warmthlevel;
+
+  if (testField1 === 'clear' && testField2 === 'warm') {
+    // Check if the imageUrls property exists in the document data
+    if (doc.data().imageUrls) {
+      var imageUrls = doc.data().imageUrls;
+      // Iterate over all the imageURLs in the array
+      for (var i = 0; i < imageUrls.length; i++) {
+        var imageUrl = imageUrls[i];
+        // Clone the new card
+        let newcard = document.getElementById("postCardTemplate").content.cloneNode(true);
+        // Populate with title, image, and description
+        newcard.querySelector('.card-title').innerHTML = name;
+        newcard.querySelector('.card-image').src = imageUrl;
+        newcard.querySelector('.card-description').innerHTML = description;
+        // Append to the container
+        document.getElementById("fits-go-here").appendChild(newcard);
       }
+    } else {
+      console.log('imageUrls property not found');
+      // Do something when imageUrls property is not found
+    }
+  } else {
+    console.log('Your drip doesnt fit');
+    // Do something when test field value is not clear
+  }
+}
+
 
 
 
