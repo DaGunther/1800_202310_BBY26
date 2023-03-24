@@ -35,9 +35,12 @@ function displayMyFits(doc) {
         var name = doc.data().name; // get value of the "name" key
         var description = doc.data().description; //gets the length field
         var image = doc.data().imageUrls; //the field that contains the URL 
-        var testField = doc.data().test;
-
-        if (testField === 'clear') {
+        var testField1 = doc.data().weathercondition;
+        console.log(testField1);
+        var testField2 = doc.data().warmthlevel;
+        console.log(testField2);
+ 
+        if (testField1 === 'clear' && testField2 === 'warm') {
           // Clone the new card
           let newcard = document.getElementById("postCardTemplate").content.cloneNode(true);
           // Populate with title, image, and description

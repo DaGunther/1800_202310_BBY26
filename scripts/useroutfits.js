@@ -7,7 +7,8 @@ form.addEventListener('submit', async (e) => {
   const name = form.name.value;
   const description = form.description.value;
   const images = form.image.files;
-  const test = form.test.value;
+  const weathercondition = form.weathercondition.value;
+  const warmthlevel = form.warmthlevel.value;
   
   // Upload images to Firebase Storage and get download URLs
   const downloadUrls = [];
@@ -23,7 +24,8 @@ form.addEventListener('submit', async (e) => {
   const outfitRef = await db.collection('outfits').add({
     name,
     description,
-    test,
+    weathercondition,
+    warmthlevel,
     imageUrls: downloadUrls,
     userId: firebase.auth().currentUser.uid
   });
@@ -38,7 +40,8 @@ form.addEventListener('submit', async (e) => {
   form.name.value = '';
   form.description.value = '';
   form.image.value = '';
-  form.test.value = '';
+  form.weathercondition.value = '';
+  form.warmthlevel = '';
   
   alert('Outfit submitted!');
 });

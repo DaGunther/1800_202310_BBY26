@@ -77,31 +77,33 @@
   <main class="main_container">
     <form id="outfit-form">
       <label for="name">Outfit Name:</label>
-      <input type="text" id="name" name="name">
-      
-      <label for="description">Description:</label>
-      <textarea id="description" name="description"></textarea>
+      <input type="text" id="name" name="name" required>
       
       <label for="image">Image:</label>
-      <input type="file" id="image" name="image" multiple>
-
-      <label for="weathercondition">Weather Condition</label>
-      <select id="weathercondition">
+      <input type="file" id="image" name="image" multiple required>
+    
+      <label for="weathercondition">Weather Condition:</label>
+      <select id="weathercondition" name="weathercondition" required>
+        <option value="">Select a weather condition</option>
         <option value="rain">Rain</option>
         <option value="clear">Clear</option>
       </select>
-
-      <label for="warmthlevel">Warmth Level</label>
-      <select id="warmthlevel">
-        <option value="coldest">-10&#8451 - 0&#8451 </option>
-        <option value="cold">0&#8451 - 10&#8451</option>
-        <option value="warm">10&#8451 - 20&#8451 </option>
-        <option value="warmer">20&#8451 - 30&#8451</option>
+    
+      <label for="warmthlevel">Warmth Level:</label>
+      <select id="warmthlevel" name="warmthlevel" required>
+        <option value="">Select a warmth level</option>
+        <option value="coldest">-10&#8451; - 0&#8451;</option>
+        <option value="cold">0&#8451; - 10&#8451;</option>
+        <option value="warm">10&#8451; - 20&#8451;</option>
+        <option value="warmer">20&#8451; - 30&#8451;</option>
       </select>
+    
+      <label for="description">Description:</label>
+      <textarea id="description" name="description"></textarea>
       
       <button type="submit">Submit</button>
     </form>
-    <!-- Enter your contents here -->
+        <!-- Enter your contents here -->
   </main>
 
   <footer class="footer fixed-bottom border-top">
