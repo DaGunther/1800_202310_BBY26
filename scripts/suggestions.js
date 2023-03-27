@@ -1,81 +1,148 @@
-// import { temperature } from './WeatherAPI.js';
-var outfits = firebase.firestore().collection("outfits");
+const outfits = firebase.firestore().collection("outfits");
 
-//-------------------------------------------------
-// this function shows finds out who is logged in,
-// reads the "myposts" field (an array) for that user, 
-// reads the details for each item in the array
-// and displays a card for each item. 
-//------------------------------------------------
+let fitsArray = [];
+let currentIndex = 0;
+
 function showMyFits() {
   firebase.auth().onAuthStateChanged(user => {
-        console.log("user is: " + user.uid);
-        db.collection("users").doc(user.uid)
-                .get()
-                .then(doc => {
-                    myposts = doc.data().outfits; //get array of my posts
-                    console.log(outfits);
-                    myposts.forEach(item => {
-                        db.collection("outfits")
-                            .doc(item)
-                            .get()
-                            .then(doc => {
-                                displayMyFits(doc);
-                            })
-                    })
-                })
+    console.log("user is: " + user.uid);
+    db.collection("users").doc(user.uid)
+      .get()
+      .then(doc => {
+        myposts = doc.data().outfits;
+        console.log(outfits);
+        myposts.forEach(item => {
+          db.collection("outfits")
+            .doc(item)
+            .get()
+            .then(doc => {
+              // Check if outfit meets weather and warmth criteria
+              var testField1 = doc.data().weathercondition;
+              var testField2 = doc.data().warmthlevel;
+              if (testField1 === selectedWeather && testField2 === selectedWarmth) {
+                // Add outfit to fitsArray
+                //fitsArray.push(doc);
+              }
+              displayMyFits(doc);
+            })
+        })
+      })
   })
 }
 
-//------------------------------------------------------------
-// this function displays ONE card, with information
-// from the post document extracted (name, description, image)
-//------------------------------------------------------------
+
 function displayMyFits(doc) {
   var name = doc.data().name;
   var description = doc.data().description;
   var testField1 = doc.data().weathercondition;
   var testField2 = doc.data().warmthlevel;
 
-  if (testField1 === 'clear' && testField2 === 'warm') {
-    // Check if the imageUrls property exists in the document data
+  if (testField1 === selectedWeather && testField2 === selectedWarmth) {
+    var fitsContainer = document.getElementById("fits-go-here");
+    fitsContainer.innerHTML = '';
+
     if (doc.data().imageUrls) {
       var imageUrls = doc.data().imageUrls;
-      // Iterate over all the imageURLs in the array
       for (var i = 0; i < imageUrls.length; i++) {
         var imageUrl = imageUrls[i];
-        // Clone the new card
         let newcard = document.getElementById("postCardTemplate").content.cloneNode(true);
-        // Populate with title, image, and description
         newcard.querySelector('.card-title').innerHTML = name;
         newcard.querySelector('.card-image').src = imageUrl;
         newcard.querySelector('.card-description').innerHTML = description;
-        // Append to the container
-        document.getElementById("fits-go-here").appendChild(newcard);
+        fitsContainer.appendChild(newcard);
+        //fitsArray.push(newcard); // Add newcard to the fitsArray
+        //console.log(fitsArray);
       }
+      selectedOutfits.push(doc.id);
     } else {
       console.log('imageUrls property not found');
-      // Do something when imageUrls property is not found
     }
   } else {
+    console.log(selectedWeather);
+    console.log(selectedWarmth);
+    console.log(imageUrl);
     console.log('Your drip doesnt fit');
-    // Do something when test field value is not clear
   }
 }
 
 
+function getWeather(lat, lon) {
+  var apiKey = "2bf5db39bb937c37fad2d2df04ff5fed";
+  var weatherUrl =
+    "https://api.openweathermap.org/data/2.5/weather?lat=" +
+    lat +
+    "&lon=" +
+    lon +
+    "&appid=" +
+    apiKey;
 
+  fetch(weatherUrl)
+    .then((response) => response.json())
+    .then((data) => {
+      var temp = data.main.temp - 273.15; // Convert to Celsius
+      var weather = data.weather[0].main;
 
-// function suggestedFit() {
-//     if (temp >= 30) {
-//         return "It's hot outside! Why not go for a swim?";
-//       } else if (temp >= 20 && temp < 30) {
-//         return "The weather is perfect for a picnic!";
-//       } else if (temp >= 10 && temp < 20) {
-//         return "It's a bit chilly outside. How about a hike?";
-//       } else {
-//         return "Brrr, it's cold! Stay indoors and curl up with a good book.";
-//       }
+      // Assign selectedWeather based on weather condition
+      if (weather === "Clear") {
+        selectedWeather = "clear";
+      } else {
+        selectedWeather = "rain";
+      }
+
+      // Assign selectedWarmth based on temperature
+      if (temp < 0) {
+        selectedWarmth = "coldest";
+      } else if (temp < 10) {
+        selectedWarmth = "cold";
+      } else if (temp < 20) {
+        selectedWarmth = "warm";
+      } else {
+        selectedWarmth = "warmer";
+      }
+
+      // Clear selectedOutfits array and display fits
+      selectedOutfits = [];
+      showMyFits();
+    })
+    .catch((error) => console.log(error));
+}
+
+document.getElementById("suggest-btn").addEventListener("click", function () {
+  getLocation();
+});
+
+function getLocation() {
+  navigator.geolocation.getCurrentPosition(
+    (position) => {
+      var lat = position.coords.latitude;
+      var lon = position.coords.longitude;
+      getWeather(lat, lon);
+      //getNextFit(); // Call getNextFit() after getWeather()
+    },
+    (error) => console.log(error)
+  );
+}
+
+// function getNextFit() {
+//   // If all outfits have been displayed, stop the loop
+//   if (currentIndex === fitsArray.length) {
+//     return;
+//   }
+
+//   // Show current fit and hide others
+//   fitsArray.forEach((fit, index) => {
+//     if (index === currentIndex) {
+//       fit.style.display = "block";
+//     } else {
+//       fit.style.display = "none";
+//     }
+//   });
+
+//   // Increment index
+//   currentIndex++;
+
+//   // If all outfits have been displayed, reset the index to 0
+//   if (currentIndex === fitsArray.length) {
+//     currentIndex = 0;
+//   }
 // }
-
-// suggestedFit();
