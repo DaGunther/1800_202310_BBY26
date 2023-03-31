@@ -73,6 +73,29 @@
   </nav>
 
   <main class="main_container">
+    <div class="container">
+      <h1>Show My Posts </h1>
+      <!-- <h1>Show My Posts <span id="name-goes-here"></span></h1> -->
+
+      <div id="myposts-go-here" class="row row-cols-auto">
+      </div>
+</div>
+
+
+
+<!-- Templates for general use, not displayed -->
+<!-- Has a "card-image", "card-title", and "card-description" -->
+<template id="postCardTemplate">
+      <div class="card py-2 mx-2 bg-light" style="width: 10rem;">
+          <img class="card-image card-img-top" src=" ..." alt="...">
+          <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-description">placeholder</p>
+              <br>
+              <a class="btn btn-secondary card-href" id="read-more">Read more ...</a>
+          </div>
+      </div>
+</template>
     <!-- Enter your contents here -->
   </main>
 
@@ -104,6 +127,7 @@
 
   <!-- Link to scripts of your own -->
   <script src="scripts/firebaseAPI_TEAMBBY26.js"></script>
+  <script src="scripts/showposts.js"></script>
   <!-- <script src="./scripts/script.js"></script> -->
 
 </body>
