@@ -169,46 +169,110 @@ for (let i = 0; i < ratings1.length; i++) {
 }
 
 
+// Rating1
+const ratingInputs1 = document.querySelectorAll('.rating1 input[type="radio"]');
+const averageRating1 = document.createElement('span');
+averageRating1.classList.add('average-rating');
+const ratingContainer1 = document.querySelector('.rating1');
+ratingContainer1.appendChild(averageRating1);
 
+const docRef1 = db.collection('posts').doc('iPuECoVwZqkN2uVxHukC');
 
-const postId = ratingElement.dataset.postId;
-  
-  // Attach a "change" event listener to all radio buttons
-  ratingInputs.forEach(input => {
-    input.addEventListener('change', e => {
-      const rating = e.target.value;
-      // Get the current document ID or generate a new one if it doesn't exist
-      const docId = 'iPuECoVwZqkN2uVxHukC' || 'Gzvt3SDv6XOOCEtKH3y6' || 'e1kq5qGI1tiA7EymbfeA'; // replace with your own document ID
-      const docRef = db.collection('posts').doc(docId);
-      // Update the document with the new rating value
-      docRef.update({
-        totalRating: firebase.firestore.FieldValue.increment(+rating),
-        ratingCount: firebase.firestore.FieldValue.increment(1)
-      })
-      .then(() => {
-        console.log('Rating saved successfully');
-      })
-      .catch(error => {
-        console.error('Error saving rating:', error);
-      });
+ratingInputs1.forEach(input => {
+  input.addEventListener('change', e => {
+    const rating = e.target.value;
+
+    docRef1.update({
+      totalRating: firebase.firestore.FieldValue.increment(+rating),
+      ratingCount: firebase.firestore.FieldValue.increment(1)
+    })
+    .then(() => {
+      console.log('Rating saved successfully');
+    })
+    .catch(error => {
+      console.error('Error saving rating:', error);
     });
   });
-  
-  // Calculate and display the average rating
-  const averageRating = document.createElement('span');
-  averageRating.classList.add('average-rating');
-  const ratingContainer = document.querySelector('.rating');
-  ratingContainer.appendChild(averageRating);
-  
-  const docId = 'iPuECoVwZqkN2uVxHukC' || 'Gzvt3SDv6XOOCEtKH3y6' || 'e1kq5qGI1tiA7EymbfeA'; // replace with your own document ID
-  const docRef = db.collection('posts').doc(docId);
-  
-  docRef.onSnapshot(snapshot => {
-    const data = snapshot.data();
-    if (data) {
-      const totalRating = data.totalRating || 0;
-      const ratingCount = data.ratingCount || 0;
-      const average = totalRating / ratingCount;
-      averageRating.textContent = `Average rating: ${average.toFixed(1)}`;
-    }
+});
+
+docRef1.onSnapshot(snapshot => {
+  const data = snapshot.data();
+  if (data) {
+    const totalRating = data.totalRating || 0;
+    const ratingCount = data.ratingCount || 0;
+    const average = totalRating / ratingCount;
+    rating_message1.innerText = `Average rating: ${average.toFixed(1)}`;
+  }
+});
+
+// Rating2
+const ratingInputs2 = document.querySelectorAll('.rating2 input[type="radio"]');
+const averageRating2 = document.createElement('span');
+averageRating2.classList.add('average-rating');
+const ratingContainer2 = document.querySelector('.rating2');
+ratingContainer2.appendChild(averageRating2);
+
+const docRef2 = db.collection('posts').doc('Gzvt3SDv6XOOCEtKH3y6');
+
+ratingInputs2.forEach(input => {
+  input.addEventListener('change', e => {
+    const rating = e.target.value;
+
+    docRef2.update({
+      totalRating: firebase.firestore.FieldValue.increment(+rating),
+      ratingCount: firebase.firestore.FieldValue.increment(1)
+    })
+    .then(() => {
+      console.log('Rating saved successfully');
+    })
+    .catch(error => {
+      console.error('Error saving rating:', error);
+    });
   });
+});
+
+docRef2.onSnapshot(snapshot => {
+  const data = snapshot.data();
+  if (data) {
+    const totalRating = data.totalRating || 0;
+    const ratingCount = data.ratingCount || 0;
+    const average = totalRating / ratingCount;
+    rating_message2.innerText = `Average rating: ${average.toFixed(2)}`;
+  }
+});
+
+// Rating3
+const ratingInputs3 = document.querySelectorAll('.rating3 input[type="radio"]');
+const averageRating3 = document.createElement('span');
+averageRating3.classList.add('average-rating');
+const ratingContainer3 = document.querySelector('.rating3');
+ratingContainer3.appendChild(averageRating3);
+
+const docRef3 = db.collection('posts').doc('e1kq5qGI1tiA7EymbfeA');
+
+ratingInputs3.forEach(input => {
+  input.addEventListener('change', e => {
+    const rating = e.target.value;
+
+    docRef3.update({
+      totalRating: firebase.firestore.FieldValue.increment(+rating),
+      ratingCount: firebase.firestore.FieldValue.increment(1)
+    })
+    .then(() => {
+      console.log('Rating saved successfully');
+    })
+    .catch(error => {
+      console.error('Error saving rating:', error);
+    });
+  });
+});
+
+docRef3.onSnapshot(snapshot => {
+  const data = snapshot.data();
+  if (data) {
+    const totalRating = data.totalRating || 0;
+    const ratingCount = data.ratingCount || 0;
+    const average = totalRating / ratingCount;
+    rating_message3.innerText = `Average rating: ${average.toFixed(3)}`;
+  }
+});
