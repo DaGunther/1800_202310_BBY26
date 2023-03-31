@@ -207,4 +207,10 @@ footer {
     footer.love {
       font-size   : 0.5rem;
     }
+    .card_container {
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      flex-direction: column;
+  }
 }

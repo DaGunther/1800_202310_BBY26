@@ -123,3 +123,92 @@ productQuery6.then((productDoc) => {
   const descriptionElement = document.getElementById('card-des-3');
   descriptionElement.textContent = description;
 });
+
+const ratings1 = document.getElementsByName('rating1');
+let ratingValue1;
+let isLocked1 = false;
+const message1 = document.getElementById('message1');
+
+for (let i = 0; i < ratings1.length; i++) {
+  ratings1[i].addEventListener('click', function() {
+    if (!isLocked1) {
+      ratingValue1 = this.value;
+      message1.innerText = `You rated it ${ratingValue1} drip score!`;
+    }
+  });
+}
+
+
+const ratings2 = document.getElementsByName('rating2');
+let ratingValue2;
+let isLocked2 = false;
+const message2 = document.getElementById('message2');
+
+for (let i = 0; i < ratings2.length; i++) {
+  ratings2[i].addEventListener('click', function() {
+    if (!isLocked2) {
+      ratingValue2 = this.value;
+      message2.innerText = `You rated it ${ratingValue2} drip score!`;
+    }
+  });
+}
+
+
+const ratings3 = document.getElementsByName('rating3');
+let ratingValue3;
+let isLocked3 = false;
+const message3 = document.getElementById('message3');
+
+for (let i = 0; i < ratings1.length; i++) {
+  ratings3[i].addEventListener('click', function() {
+    if (!isLocked3) {
+      ratingValue3 = this.value;
+      message3.innerText = `You rated it ${ratingValue3} drip score!`;
+    }
+  });
+}
+
+
+
+
+const postId = ratingElement.dataset.postId;
+  
+  // Attach a "change" event listener to all radio buttons
+  ratingInputs.forEach(input => {
+    input.addEventListener('change', e => {
+      const rating = e.target.value;
+      // Get the current document ID or generate a new one if it doesn't exist
+      const docId = 'iPuECoVwZqkN2uVxHukC' || 'Gzvt3SDv6XOOCEtKH3y6' || 'e1kq5qGI1tiA7EymbfeA'; // replace with your own document ID
+      const docRef = db.collection('posts').doc(docId);
+      // Update the document with the new rating value
+      docRef.update({
+        totalRating: firebase.firestore.FieldValue.increment(+rating),
+        ratingCount: firebase.firestore.FieldValue.increment(1)
+      })
+      .then(() => {
+        console.log('Rating saved successfully');
+      })
+      .catch(error => {
+        console.error('Error saving rating:', error);
+      });
+    });
+  });
+  
+  // Calculate and display the average rating
+  const averageRating = document.createElement('span');
+  averageRating.classList.add('average-rating');
+  const ratingContainer = document.querySelector('.rating');
+  ratingContainer.appendChild(averageRating);
+  
+  const docId = 'iPuECoVwZqkN2uVxHukC' || 'Gzvt3SDv6XOOCEtKH3y6' || 'e1kq5qGI1tiA7EymbfeA'; // replace with your own document ID
+  const docRef = db.collection('posts').doc(docId);
+  
+  docRef.onSnapshot(snapshot => {
+    const data = snapshot.data();
+    if (data) {
+      const totalRating = data.totalRating || 0;
+      const ratingCount = data.ratingCount || 0;
+      const average = totalRating / ratingCount;
+      averageRating.textContent = `Average rating: ${average.toFixed(1)}`;
+    }
+  });

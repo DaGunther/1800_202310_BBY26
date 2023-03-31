@@ -90,6 +90,81 @@ a:active {
     margin-top: auto;
 }
 
+.rating1 {
+    display: flex;
+    align-items: flex-start;
+    font-size: 1.5rem;
+    color: #d3d3d3;
+}
+
+.rating1 input[type="radio"] {
+    display: none;
+}
+
+
+.rating1 label {
+    color: #ffc600;
+    cursor: pointer;
+    padding: 0 0.25rem;
+}
+
+.rating1 label:hover {
+    background-color: skyblue;
+}
+
+
+
+
+
+.rating2 {
+    display: flex;
+    align-items: flex-start;
+    font-size: 1.5rem;
+    color: #d3d3d3;
+}
+
+.rating2 input[type="radio"] {
+    display: none;
+}
+
+
+.rating2 label {
+    color: #ffc600;
+    cursor: pointer;
+    padding: 0 0.25rem;
+}
+
+.rating2 label:hover {
+    background-color: skyblue;
+}
+
+
+
+
+
+.rating3 {
+    display: flex;
+    align-items: flex-start;
+    font-size: 1.5rem;
+    color: #d3d3d3;
+}
+
+.rating3 input[type="radio"] {
+    display: none;
+}
+
+
+.rating3 label {
+    color: #ffc600;
+    cursor: pointer;
+    padding: 0 0.25rem;
+}
+
+.rating3 label:hover {
+    background-color: skyblue;
+}
+
+
 
 #logo {
     grid-area: logo;
@@ -107,4 +182,79 @@ a:active {
 #login_button {
     color: aliceblue;
     text-decoration: none;
+}
+
+@media (max-width : 1000px) {
+    body {
+        line-height: 1rem;
+    }
+
+    .frontFace h1 {
+        font-size: 0.8rem;
+        line-height: 2.5rem;
+    }
+
+    .backFace i {
+        font-size: 2rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .backFace h1,
+    .backFace h2 {
+        font-size: 1rem;
+        margin: 0.2rem;
+    }
+
+    .backFace small {
+        font-size: 0.5rem;
+        font-weight: bold;
+        padding: 0.2rem 0.5rem;
+        margin: 0 0 0.2rem 0;
+    }
+
+    .backFace small:hover {
+        background-color: #43545c;
+        color: #ffffff;
+    }
+
+    .backFace small span {
+        font-size: 0.7rem;
+    }
+
+    .backFace h4 {
+        font-size: 0.4rem;
+    }
+
+    footer {
+        font-size: 0.5rem;
+        padding-top: 0.5rem;
+    }
+
+    footer.love {
+        font-size: 0.5rem;
+    }
+
+    .card_container {
+        display: flex;
+        align-items: stretch;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .main_container {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    #DRIPssociate_cards {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .headers {
+        text-align: center;
+    }
 }
