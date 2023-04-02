@@ -1,70 +1,22 @@
 const outfits = firebase.firestore().collection("outfits");
 
-let fitsArray = [];
-let currentIndex = 0;
+let tempdisplay = 0;
+let weatherdisplay = "";
+let outfitDisplayed = false;
+let currentOutfitIndex = -1;
+let selectedWeather = "";
+let selectedWarmth = "";
 
-function showMyFits() {
-  firebase.auth().onAuthStateChanged(user => {
-    console.log("user is: " + user.uid);
-    db.collection("users").doc(user.uid)
-      .get()
-      .then(doc => {
-        myposts = doc.data().outfits;
-        console.log(outfits);
-        myposts.forEach(item => {
-          db.collection("outfits")
-            .doc(item)
-            .get()
-            .then(doc => {
-              // Check if outfit meets weather and warmth criteria
-              var testField1 = doc.data().weathercondition;
-              var testField2 = doc.data().warmthlevel;
-              if (testField1 === selectedWeather && testField2 === selectedWarmth) {
-                // Add outfit to fitsArray
-                //fitsArray.push(doc);
-              }
-              displayMyFits(doc);
-            })
-        })
-      })
-  })
+function getLocation() {
+  navigator.geolocation.getCurrentPosition(
+    (position) => {
+      var lat = position.coords.latitude;
+      var lon = position.coords.longitude;
+      getWeather(lat, lon);
+    },
+    (error) => console.log(error)
+  );
 }
-
-
-function displayMyFits(doc) {
-  var name = doc.data().name;
-  var description = doc.data().description;
-  var testField1 = doc.data().weathercondition;
-  var testField2 = doc.data().warmthlevel;
-
-  if (testField1 === selectedWeather && testField2 === selectedWarmth) {
-    var fitsContainer = document.getElementById("fits-go-here");
-    fitsContainer.innerHTML = '';
-
-    if (doc.data().imageUrls) {
-      var imageUrls = doc.data().imageUrls;
-      for (var i = 0; i < imageUrls.length; i++) {
-        var imageUrl = imageUrls[i];
-        let newcard = document.getElementById("postCardTemplate").content.cloneNode(true);
-        newcard.querySelector('.card-title').innerHTML = name;
-        newcard.querySelector('.card-image').src = imageUrl;
-        newcard.querySelector('.card-description').innerHTML = description;
-        fitsContainer.appendChild(newcard);
-        //fitsArray.push(newcard); // Add newcard to the fitsArray
-        //console.log(fitsArray);
-      }
-      selectedOutfits.push(doc.id);
-    } else {
-      console.log('imageUrls property not found');
-    }
-  } else {
-    console.log(selectedWeather);
-    console.log(selectedWarmth);
-    console.log(imageUrl);
-    console.log('Your drip doesnt fit');
-  }
-}
-
 
 function getWeather(lat, lon) {
   var apiKey = "2bf5db39bb937c37fad2d2df04ff5fed";
@@ -81,6 +33,8 @@ function getWeather(lat, lon) {
     .then((data) => {
       var temp = data.main.temp - 273.15; // Convert to Celsius
       var weather = data.weather[0].main;
+      tempdisplay = temp.toFixed(1);
+      weatherdisplay = weather;
 
       // Assign selectedWeather based on weather condition
       if (weather === "Clear") {
@@ -99,50 +53,100 @@ function getWeather(lat, lon) {
       } else {
         selectedWarmth = "warmer";
       }
-
-      // Clear selectedOutfits array and display fits
-      selectedOutfits = [];
+      // Call showMyFits() after getWeather()
       showMyFits();
     })
     .catch((error) => console.log(error));
 }
 
-document.getElementById("suggest-btn").addEventListener("click", function () {
-  getLocation();
-});
+function showMyFits(startIndex = 0) {
+  firebase.auth().onAuthStateChanged(user => {
+    console.log("user is: " + user.uid);
+    db.collection("users").doc(user.uid)
+      .get()
+      .then(doc => {
+        myposts = doc.data().outfits;
+        console.log(outfits);
 
-function getLocation() {
-  navigator.geolocation.getCurrentPosition(
-    (position) => {
-      var lat = position.coords.latitude;
-      var lon = position.coords.longitude;
-      getWeather(lat, lon);
-      //getNextFit(); // Call getNextFit() after getWeather()
-    },
-    (error) => console.log(error)
-  );
+        let foundSuitableOutfit = false;
+        
+        for (let i = startIndex; i < myposts.length; i++) {
+          const item = myposts[i];
+          db.collection("outfits")
+            .doc(item)
+            .get()
+            .then(doc => {
+              // Check if outfit meets weather and warmth criteria
+              var testField1 = doc.data().weathercondition;
+              var testField2 = doc.data().warmthlevel;
+              if (testField1 === selectedWeather && testField2 === selectedWarmth) {
+                // Display the new outfit card
+                displayMyFits(doc);
+                outfitDisplayed = true;
+                currentOutfitIndex = i;
+                foundSuitableOutfit = true;
+              }
+            })
+            .then(() => {
+              if (!foundSuitableOutfit && i === myposts.length - 1) {
+                // If no suitable outfit was found and it's the last item, try again with the incremented index
+                showMyFits(startIndex + 1);
+              }
+            });
+        }
+      });
+  });
 }
 
-// function getNextFit() {
-//   // If all outfits have been displayed, stop the loop
-//   if (currentIndex === fitsArray.length) {
-//     return;
-//   }
+function displayMyFits(doc) {
+  if (outfitDisplayed) return;
 
-//   // Show current fit and hide others
-//   fitsArray.forEach((fit, index) => {
-//     if (index === currentIndex) {
-//       fit.style.display = "block";
-//     } else {
-//       fit.style.display = "none";
-//     }
-//   });
+  var fitsContainer = document.getElementById("fits-go-here");
+  fitsContainer.innerHTML = ''; // Clear the fitsContainer before display
 
-//   // Increment index
-//   currentIndex++;
+  var name = doc.data().name;
+  var description = "The weather is \"" + weatherdisplay
+    + "\" and it is " + tempdisplay + " degrees Celcius. \nWe recommend this outfit.";
+  var testField1 = doc.data().weathercondition;
+  var testField2 = doc.data().warmthlevel;
 
-//   // If all outfits have been displayed, reset the index to 0
-//   if (currentIndex === fitsArray.length) {
-//     currentIndex = 0;
-//   }
-// }
+  if (testField1 === selectedWeather && testField2 === selectedWarmth) {
+    var fitsContainer = document.getElementById("fits-go-here");
+
+    if (doc.data().imageUrls) {
+      var imageUrls = doc.data().imageUrls;
+      for (var i = 0; i < imageUrls.length; i++) {
+        var imageUrl = imageUrls[i];
+        let newcard = document.getElementById("postCardTemplate").content.cloneNode(true);
+        newcard.querySelector('.card-title').innerHTML = name;
+        newcard.querySelector('.card-image').src = imageUrl;
+        newcard.querySelector('.card-description').innerHTML = description;
+        fitsContainer.appendChild(newcard);
+      }
+      outfitDisplayed = true; // Add this line to set the flag as true once an outfit is displayed
+    } else {
+      console.log('imageUrls property not found');
+    }
+  } else {
+    console.log(selectedWeather);
+    console.log(selectedWarmth);
+    console.log(imageUrl);
+    console.log('That drip doesnt fit');
+  }
+}
+
+const myButton = document.getElementById("button1");
+const myButton2 = document.getElementById("button2");
+myButton2.style.display = "none";
+
+document.getElementById("button1").addEventListener("click", function () {
+  myButton.style.display = "none";
+  getLocation();
+  myButton2.style.display = "block";
+});
+
+document.getElementById("button2").addEventListener("click", function () {
+  outfitDisplayed = false; // Reset the outfitDisplayed flag
+  showMyFits(currentOutfitIndex + 1);
+});
+
