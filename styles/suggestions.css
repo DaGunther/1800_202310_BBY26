@@ -61,6 +61,23 @@
     transform: translateY(-3px);
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
   }
+
+  @keyframes spin {
+    from {
+      transform: rotateY(0deg);
+    }
+    to {
+      transform: rotateY(360deg);
+    }
+  }
+  
+  .spin {
+    animation-name: spin;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+  }
+  
   
   
   

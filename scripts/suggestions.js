@@ -102,11 +102,11 @@ function displayMyFits(doc) {
   if (outfitDisplayed) return;
 
   var fitsContainer = document.getElementById("fits-go-here");
-  fitsContainer.innerHTML = ''; // Clear the fitsContainer before display
+  fitsContainer.innerHTML = '';
 
   var name = doc.data().name;
   var description = "The weather is \"" + weatherdisplay
-    + "\" and it is " + tempdisplay + " degrees Celcius. \nWe recommend this outfit.";
+    + "\" and it is " + tempdisplay + " degrees Celsius. \nWe recommend this outfit.";
   var testField1 = doc.data().weathercondition;
   var testField2 = doc.data().warmthlevel;
 
@@ -121,9 +121,10 @@ function displayMyFits(doc) {
         newcard.querySelector('.card-title').innerHTML = name;
         newcard.querySelector('.card-image').src = imageUrl;
         newcard.querySelector('.card-description').innerHTML = description;
+        newcard.querySelector('.card').classList.add('spin'); // Add the spin class to the card
         fitsContainer.appendChild(newcard);
       }
-      outfitDisplayed = true; // Add this line to set the flag as true once an outfit is displayed
+      outfitDisplayed = true;
     } else {
       console.log('imageUrls property not found');
     }
@@ -134,6 +135,7 @@ function displayMyFits(doc) {
     console.log('That drip doesnt fit');
   }
 }
+
 
 const myButton = document.getElementById("button1");
 const myButton2 = document.getElementById("button2");
