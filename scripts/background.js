@@ -1,3 +1,15 @@
+function getLocation() {
+  navigator.geolocation.getCurrentPosition(
+    (position) => {
+      var lat = position.coords.latitude;
+      var lon = position.coords.longitude;
+      getWeather(lat, lon);
+    },
+    (error) => console.log(error)
+  );
+}
+
+
 function getWeather(lat, lon) {
     var apiKey = "2bf5db39bb937c37fad2d2df04ff5fed";
     var weatherUrl =
@@ -11,35 +23,35 @@ function getWeather(lat, lon) {
     fetch(weatherUrl)
       .then((response) => response.json())
       .then((data) => {
-        var temp = data.main.temp - 273.15; // Convert to Celsius
+        // var temp = data.main.temp - 273.15; // Convert to Celsius
         var weather = data.weather[0].main;
-        tempdisplay = Math.round(temp * 10) / 10;
-        weatherdisplay = weather;
+        // tempdisplay = Math.round(temp * 10) / 10;
+        // weatherdisplay = weather;
   
-        // Assign selectedWeather based on weather condition
-        if (weather === "Clear") {
-          selectedWeather = "clear";
-        } else {
-          selectedWeather = "rain";
-        }
+        // // Assign selectedWeather based on weather condition
+        // if (weather === "Clear") {
+        //   selectedWeather = "clear";
+        // } else {
+        //   selectedWeather = "rain";
+        // }
   
-        // Assign selectedWarmth based on temperature
-        if (temp < 0) {
-          selectedWarmth = "coldest";
-        } else if (temp < 10) {
-          selectedWarmth = "cold";
-        } else if (temp < 20) {
-          selectedWarmth = "warm";
-        } else {
-          selectedWarmth = "warmer";
-        }
+        // // Assign selectedWarmth based on temperature
+        // if (temp < 0) {
+        //   selectedWarmth = "coldest";
+        // } else if (temp < 10) {
+        //   selectedWarmth = "cold";
+        // } else if (temp < 20) {
+        //   selectedWarmth = "warm";
+        // } else {
+        //   selectedWarmth = "warmer";
+        // }
   
         // Set background image based on weather condition
         var container = document.getElementById("background");
         if (weather === "Clear") {
-          container.style.backgroundImage = "url(clear.jpg)";
+          container.style.backgroundImage = "url(images/sunny.jpg)";
         } else if (weather === "Rain") {
-          container.style.backgroundImage = "url(rain.jpg)";
+          container.style.backgroundImage = "url(images/rainy.jpg)";
         } else if (weather === "Clouds") {
           container.style.backgroundImage = "url(images/clouds.png)";
         } else {
@@ -49,4 +61,6 @@ function getWeather(lat, lon) {
       })
       .catch((error) => console.log(error));
   }
+
+  getLocation();
   
