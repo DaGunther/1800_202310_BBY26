@@ -33,7 +33,7 @@ function getWeather(lat, lon) {
     .then((data) => {
       var temp = data.main.temp - 273.15; // Convert to Celsius
       var weather = data.weather[0].main;
-      tempdisplay = temp.toFixed(1);
+      tempdisplay = Math.round(temp * 10) / 10;
       weatherdisplay = weather;
 
       // Assign selectedWeather based on weather condition

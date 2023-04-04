@@ -88,8 +88,9 @@ firebase.auth().onAuthStateChanged(function (user) {
             }).catch(function (error) {
               console.log("Error getting document:", error);
             });
-      // Get user's post
-      firebase.firestore().collection('posts').where("user_id", "==", user.uid).get().then(function(querySnapshot) {
+      
+            // Get user's post
+      firebase.firestore().collection('posts').where("owner", "==", user.uid).limit(3).get().then(function(querySnapshot) {
         let postCardsHtml = "";
         querySnapshot.forEach(function(doc) {
           const productData = doc.data();
@@ -100,7 +101,7 @@ firebase.auth().onAuthStateChanged(function (user) {
           const postCardHtml = `
           <div class="col">
             <div class="card">
-              <img src="${imageUrl}" class="card-img-top" alt="Outfit Image">
+              <img src="${imageUrl}" class="card-img-top" alt="Outfit Image" style="max-height: 50%;">
               <div class="card-body">
                 <h5 class="card-title">${title}</h5>
                 <p class="card-text">${description}</p>
@@ -119,4 +120,5 @@ firebase.auth().onAuthStateChanged(function (user) {
       console.log("No user signed in.");
     }
   });
+  
   

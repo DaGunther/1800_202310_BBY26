@@ -76,25 +76,25 @@
 
   <main class="main_container">
     <!-- Enter your contents here -->
-    <section class="h-100 gradient-custom-2">
+    <section class="h-100 gradient-custom-2" style="min-width: 75%;">
       <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
           <div class="col col-lg-9 col-xl-7">
             <div class="card">
               <div class="rounded-top text-white d-flex flex-row" style="background-color: #000; height:200px;">
-                <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
+                <div class="ms-4 mt-5 d-flex flex-column" style="width: 100px;">
                   <img id="mypic-goes-here"
                     src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp"
                     alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
-                    style="width: 150px; z-index: 1">
-                  <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark" style="z-index: 1;">
+                    style="height: 150px; z-index: 1">
+                  <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark" style="z-index: 1; ">
                     <a href="editprofile.html" style="text-decoration: none; color: #000;">
                       Edit profile
                     </a>
                   </button>
                   <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark" style="z-index: 1;">
-                    <a href="useroutfits.html" style="text-decoration: none; color: #000;">
-                      Add clothing
+                    <a href="outfitcollection.html" style="text-decoration: none; color: #000;">
+                      Personal Fits
                     </a>
                   </button>
                   
@@ -130,7 +130,9 @@
                 </div>
                 <div class="d-flex justify-content-between align-items-center mb-4">
                   <p class="lead fw-normal mb-0">User's Submissions</p>
-                  <p class="mb-0"><a href="#!" class="text-muted">Show all</a></p>
+                  <p class="mb-0">
+                    <a href="#!" class="text-muted">Show more</a>
+                  </p>
                 </div>
                 <div class="row g-2">
                   <div class="col mb-2">
@@ -177,7 +179,6 @@
   <script src="scripts/firebaseAPI_TEAMBBY26.js"></script>
   <script src="scripts/profile.js"></script>
   <script src="scripts/editprofile.js"></script>
-  <script src="scripts/main.js"></script>
   <!-- <script src="./scripts/script.js"></script> -->
 
 </body>
