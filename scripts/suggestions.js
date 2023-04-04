@@ -171,8 +171,11 @@ document.getElementById("button1").addEventListener("click", function () {
 
 });
 
+const cardSuggestion = document.getElementsById("display");
+
 document.getElementById("button2").addEventListener("click", function () {
   outfitDisplayed = false; // Reset the outfitDisplayed flag
+  cardSuggestion.style.display = "none";
   showMyFits(currentOutfitIndex + 1);
 });
 

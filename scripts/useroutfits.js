@@ -43,7 +43,30 @@ form.addEventListener('submit', async (e) => {
   form.weathercondition.value = '';
   form.warmthlevel = '';
   
-  alert('Outfit submitted!');
+  var opacity = 0;
+var intervalID = setInterval(fade, 20); // decrease interval time to 20ms
+
+function fade() {
+  var element = document.getElementById("fade");
+  opacity += 0.05; // increase opacity faster
+  element.style.opacity = opacity;
+  if (opacity >= 1) {
+    clearInterval(intervalID);
+    setTimeout(function() {
+      intervalID = setInterval(fadeOut, 20); // decrease interval time for fadeOut
+    }, 2000); // wait 2 seconds before fading out
+  }
+}
+
+function fadeOut() {
+  var element = document.getElementById("fade");
+  opacity -= 0.05; // decrease opacity faster
+  element.style.opacity = opacity;
+  if (opacity <= 0) {
+    clearInterval(intervalID);
+  }
+}
+
 });
 
 

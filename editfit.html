@@ -32,6 +32,7 @@
 
   <!-- Link to styles of your own -->
   <link href="styles/style.css" rel="stylesheet" type="text/css">
+  
 
 </head>
 
@@ -61,7 +62,6 @@
               <li><a class="dropdown-item" href="submission.html">Submit Your Own</a></li>
             </ul>
           </li>
-        
         <li class="nav-item">
           <a class="nav-link" href="index.html">Sign Out</a>
         </li>
@@ -75,39 +75,8 @@
     </div>
   </nav>
 
-  <main class="main_container">
+  <main id="background" class="main_container">
     <!-- Enter your contents here -->
-    <h1 style="margin-top: 20px;">Personal Collection</h1>
-    <button id="button1" class="btn btn-outline-light">
-      <a href="useroutfits.html" class="text-muted">Add more Fits!</a>
-    </button>
-    <div class="container">
-      <h1></h1>
-      <!-- <h1>Show My Posts <span id="name-goes-here"></span></h1> -->
-
-      <div id="fits-go-here" class="row justify-content-center">
-      </div>
-    </div>
-
-    <!-- Templates for general use, not displayed -->
-    <!-- Has a "card-image", "card-title", and "card-description" -->
-    <template id="postCardTemplate">
-      <div class="card py-2 mx-2 bg-light" style="width: 10rem;">
-        <img class="card-image card-img-top" src=" ..." alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-description">placeholder</p>
-          <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark" style="z-index: 1; ">
-            <a href="editfit.html" style="text-decoration: none; color: #000;">
-              Edit Fit
-            </a>
-          </button>
-          <br>
-          <!-- <a class="btn btn-secondary card-href" id="read-more">Read more ...</a> -->
-        </div>
-      </div>
-    </template>
-
   </main>
 
   <div class="footer">
@@ -137,7 +106,6 @@
 
   <!-- Link to scripts of your own -->
   <script src="scripts/firebaseAPI_TEAMBBY26.js"></script>
-  <script src="scripts/outfitcollection.js"></script>
   <!-- <script src="./scripts/script.js"></script> -->
 
 </body>
