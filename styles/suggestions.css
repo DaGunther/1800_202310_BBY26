@@ -77,6 +77,24 @@
     animation-timing-function: ease-out;
     animation-fill-mode: forwards;
   }
+
+  @keyframes flashing {
+    0% {opacity: 1;}
+    20% {opacity: 0.1;}
+    40% {opacity: 1;}
+    60% {opacity: 0.1;}
+    80% {opacity: 1;}
+    100% {opacity: 0.1;}
+  }
+  
+  #loading {
+    animation: flashing 3s infinite;
+  }
+
+  #loading1 {
+    animation: flashing 3s infinite;
+  }
+  
   
   
   

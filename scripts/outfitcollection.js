@@ -36,7 +36,7 @@ function displayMyFits(doc, outfitDisplayed) {
   var fitsContainer = document.getElementById("fits-go-here");
 
   var name = doc.data().name;
-  var description = "We recommend this outfit.";
+  var description = doc.data().description;
 
   if (doc.data().imageUrls) {
     var imageUrls = doc.data().imageUrls;

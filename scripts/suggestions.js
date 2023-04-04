@@ -139,12 +139,36 @@ function displayMyFits(doc) {
 
 const myButton = document.getElementById("button1");
 const myButton2 = document.getElementById("button2");
+const loadingMsg = document.getElementById("loading");
+const loadingMsg2 = document.getElementById("loading1");
 myButton2.style.display = "none";
 
 document.getElementById("button1").addEventListener("click", function () {
+  // hide button1
   myButton.style.display = "none";
-  getLocation();
-  myButton2.style.display = "block";
+
+  // show "loading" message
+  loadingMsg.style.display = "block";
+
+  // delay the getLocation() function call by 2 seconds
+  setTimeout(function() {
+    loadingMsg.style.display = "none";
+    loadingMsg2.style.display = "block";
+    setTimeout(function() {
+      loadingMsg2.style.display = "none";
+  
+      getLocation();
+  
+      // hide "loading" message
+  
+      // show button2
+      setTimeout(function() {
+        myButton2.style.display = "block";
+  
+      }, 3000);
+    }, 3000);
+  }, 3000);
+
 });
 
 document.getElementById("button2").addEventListener("click", function () {
