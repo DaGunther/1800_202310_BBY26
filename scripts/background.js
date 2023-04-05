@@ -60,6 +60,20 @@ function getWeather(lat, lon) {
 
       })
       .catch((error) => console.log(error));
+  }function setWeatherBackground(lat, lon) {
+    // Your weather API code here
+  
+    // Set background image based on weather condition
+    var container = document.getElementById("background");
+    if (weather === "Clear") {
+      container.classList.add("sunny_bg");
+    } else if (weather === "Rain") {
+      container.classList.add("rainy_bg");
+    } else if (weather === "Clouds") {
+      container.classList.add("cloudy_bg");
+    } else {
+      container.classList.add("default_bg");
+    }
   }
 
   getLocation();
