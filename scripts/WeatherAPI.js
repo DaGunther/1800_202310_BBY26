@@ -1,6 +1,6 @@
 
 
-const app = new Vue( {
+const weatherapp = new Vue( {
     el   : 'main',
     data : {
       position  : {
