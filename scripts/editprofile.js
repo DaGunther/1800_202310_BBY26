@@ -161,7 +161,7 @@ function saveUserInfo() {
                         })
                             .then(function () {
                                 console.log('Added Profile Pic URL to Firestore.');
-                                console.log('Saved use profile info');
+                                console.log('Saved user profile info');
                                 document.getElementById('personalInfoFields').disabled = true;
                             })
                     })

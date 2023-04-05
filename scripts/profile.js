@@ -103,8 +103,7 @@ firebase.auth().onAuthStateChanged(function (user) {
             <div class="card">
               <img src="${imageUrl}" class="card-img-top" alt="Outfit Image" style="max-height: 50%;">
               <div class="card-body">
-                <h5 class="card-title">${title}</h5>
-                <p class="card-text">${description}</p>
+                <h5 class="card-title">${description}</h5>
                 <a href="#" class="btn btn-primary">View outfit</a>
               </div>
             </div>
