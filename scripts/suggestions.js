@@ -3,9 +3,10 @@ const outfits = firebase.firestore().collection("outfits");
 let tempdisplay = 0;
 let weatherdisplay = "";
 let outfitDisplayed = false;
-let currentOutfitIndex = -1;
+let outfitIndex = 0;
 let selectedWeather = "";
 let selectedWarmth = "";
+let fitoutfits = [];
 
 function getLocation() {
   navigator.geolocation.getCurrentPosition(
@@ -59,62 +60,82 @@ function getWeather(lat, lon) {
     .catch((error) => console.log(error));
 }
 
-function showMyFits(startIndex = 0) {
+function showMyFits() {
   firebase.auth().onAuthStateChanged(user => {
     console.log("user is: " + user.uid);
     db.collection("users").doc(user.uid)
       .get()
       .then(doc => {
         myposts = doc.data().outfits;
-        console.log(outfits);
+        console.log("myPosts: " + myposts);
 
         let foundSuitableOutfit = false;
-        
-        for (let i = startIndex; i < myposts.length; i++) {
+
+        // Create an array to store the promises
+        let promises = [];
+
+        for (let i = 0; i < myposts.length; i++) {
           const item = myposts[i];
-          db.collection("outfits")
-            .doc(item)
-            .get()
-            .then(doc => {
-              // Check if outfit meets weather and warmth criteria
-              var testField1 = doc.data().weathercondition;
-              var testField2 = doc.data().warmthlevel;
-              if (testField1 === selectedWeather && testField2 === selectedWarmth) {
-                // Display the new outfit card
-                displayMyFits(doc);
-                outfitDisplayed = true;
-                currentOutfitIndex = i;
-                foundSuitableOutfit = true;
-              }
-            })
-            .then(() => {
-              if (!foundSuitableOutfit && i === myposts.length - 1) {
-                // If no suitable outfit was found and it's the last item, try again with the incremented index
-                showMyFits(startIndex + 1);
-              }
-            });
+          console.log("item: " + item);
+
+          // Push the promise to the promises array
+          promises.push(
+            db.collection("outfits")
+              .doc(item)
+              .get()
+              .then(doc => {
+                // Check if outfit meets weather and warmth criteria
+                if (doc && doc.exists && doc.data() && doc.data().weathercondition) {
+                  var testField1 = doc.data().weathercondition;
+                  var testField2 = doc.data().warmthlevel;
+                  console.log(selectedWeather);
+                  console.log(testField1);
+                  console.log(selectedWarmth);
+                  console.log(testField2);
+                  if (testField1 === selectedWeather
+                    && testField2 === selectedWarmth) {
+                    console.log("Match");
+                    fitoutfits.push(doc.data());
+                    console.log("Fit array: " + fitoutfits[outfitIndex].name);
+                    foundSuitableOutfit = true;
+                  }
+                } else {
+                  console.log("No match or invalid doc");
+                }
+              })
+          );
         }
+
+        // Wait for all the promises to resolve
+        Promise.all(promises).then(() => {
+          console.log(fitoutfits[outfitIndex].name);
+          displayMyFits(fitoutfits, outfitIndex);
+        });
       });
   });
 }
 
-function displayMyFits(doc) {
-  if (outfitDisplayed) return;
+function displayMyFits(fitoutfits, outfitIndex) {
+  console.log("running");
+  let outfit = fitoutfits[outfitIndex];
+  // if (outfitDisplayed) return;
 
   var fitsContainer = document.getElementById("fits-go-here");
   fitsContainer.innerHTML = '';
 
-  var name = doc.data().name;
+  var name = outfit.name;
+  console.log("Name: " + name)
   var description = "The weather is \"" + weatherdisplay
     + "\" and it is " + tempdisplay + " degrees Celsius. \nWe recommend this outfit.";
-  var testField1 = doc.data().weathercondition;
-  var testField2 = doc.data().warmthlevel;
+  var testField1 = outfit.weathercondition;
+  var testField2 = outfit.warmthlevel;
+  console.log("fitoutfit weather: " + outfit.weathercondition);
 
   if (testField1 === selectedWeather && testField2 === selectedWarmth) {
     var fitsContainer = document.getElementById("fits-go-here");
 
-    if (doc.data().imageUrls) {
-      var imageUrls = doc.data().imageUrls;
+    if (outfit.imageUrls) {
+      var imageUrls = outfit.imageUrls;
       for (var i = 0; i < imageUrls.length; i++) {
         var imageUrl = imageUrls[i];
         let newcard = document.getElementById("postCardTemplate").content.cloneNode(true);
@@ -151,31 +172,51 @@ document.getElementById("button1").addEventListener("click", function () {
   loadingMsg.style.display = "block";
 
   // delay the getLocation() function call by 2 seconds
-  setTimeout(function() {
+  setTimeout(function () {
     loadingMsg.style.display = "none";
     loadingMsg2.style.display = "block";
-    setTimeout(function() {
+    setTimeout(function () {
       loadingMsg2.style.display = "none";
-  
+
       getLocation();
-  
+
       // hide "loading" message
-  
+
       // show button2
-      setTimeout(function() {
+      setTimeout(function () {
         myButton2.style.display = "block";
-  
+
       }, 3000);
     }, 3000);
   }, 3000);
 
 });
 
-const cardSuggestion = document.getElementsById("display");
+const cardSuggestion = document.getElementById("fits-go-here");
 
 document.getElementById("button2").addEventListener("click", function () {
   outfitDisplayed = false; // Reset the outfitDisplayed flag
-  cardSuggestion.style.display = "none";
-  showMyFits(currentOutfitIndex + 1);
-});
+  // cardSuggestion.style.display = "none";
+  loadingMsg.style.display = "block";
+  
+  // delay the getLocation() function call by 2 seconds
+  setTimeout(function () {
+    loadingMsg.style.display = "none";
+    loadingMsg2.style.display = "block";
+    setTimeout(function () {
+      loadingMsg2.style.display = "none";
+      
 
+      outfitIndex++;
+      displayMyFits(fitoutfits, outfitIndex);
+
+      // hide "loading" message
+
+      // show button2
+      setTimeout(function () {
+        myButton2.style.display = "block";
+
+      }, 3000);
+    }, 3000);
+  }, 3000);
+});
