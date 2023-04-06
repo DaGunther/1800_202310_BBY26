@@ -16,7 +16,7 @@
   <!-- Boostrap Library JS CDN  go here -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
-    </script>
+  </script>
 
   <!-------------------------------------------------------->
   <!-- Firebase 8 Library related CSS, JS, JQuery go here -->
@@ -31,126 +31,141 @@
   <!-- Other libraries go here -->
 
   <!-- Link to styles of your own -->
-  <link href="styles/style.css" rel="stylesheet" type="text/css">
+  <link href="styles/styleNAVFIX.css" rel="stylesheet" type="text/css">
   <link href="styles/main.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
 
-  <nav class="navbar navbar-expand-lg">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="main.html">💧</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="profile.html">My Profile</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="DRIPssociates.html">DRIPssociates</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              User Submissions
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="USERmissions.html">Top Rated 🔥</a></li>
-              <li><a class="dropdown-item" href="submission.html">Submit Your Own</a></li>
-            </ul>
-          </li>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="index.html">Sign Out</a>
-        </li>
+  <div id="background">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="main.html">💧</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="profile.html">My Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="DRIPssociates.html">DRIPssociates</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                User Submissions
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="USERmissions.html">Top Rated 🔥</a></li>
+                <li><a class="dropdown-item" href="submission.html">Submit Your Own</a></li>
+              </ul>
+            </li>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Sign Out</a>
+            </li>
 
+          </ul>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-light" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <div class="main_container">
+      <h3 class="headers">DRIPssociates</h3>
+      <h5 class="headers">None of this would've been possible had it not been for our sponsors.</h5>
+      <h5 class="headers">Here are the links to our three main sponsors!</h5>
+      <div id="DRIPssociate_cards">
+        <div class="card mb-3" style="max-width: 540px;">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="images/supremelogo.jpg" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">Supreme New York</h5>
+                <p class="card-text">Supreme is an American clothing and skateboarding lifestyle brand established in
+                  New York City in April 1994.
+                  The brand aims to appeal to youth culture in general as well as the skateboarding and hip hop scenes
+                  specifically. The company makes skateboards in addition to clothing and accessories.
+                  The red box logo with "Supreme" in white Futura Heavy Oblique is thought to be largely based on
+                  Barbara Kruger's art.</p>
+                <p class="card-text"><small class="text-body-secondary"><a href="https://us.supreme.com/"
+                      style="color: gray">Supreme Official Website</a></small></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card mb-3" style="max-width: 540px;">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="images/palacelogo.jpg" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">Palace Skateboards</h5>
+                <p class="card-text">Palace Skateboards (or Palace) is a London-based skateboarding and clothing brand
+                  established in 2009. The brand was founded by Levent Tanju and his skate team, the Palace Wayward Boys
+                  Choir, along with Gareth Skewis.
+                  Palace focuses on skatewear with heavy 90s and pop culture influences alongside VHS style clothing
+                  advertisements.
+                  The skate team promotes their branded content and skate videos. Palace has flagship stores in London,
+                  New York, Los Angeles and Tokyo.</p>
+                <p class="card-text"><small class="text-body-secondary"><a href="https://www.palaceskateboards.com/"
+                      style="color:gray">Palace Official Website</a></small></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card mb-3" style="max-width: 540px;">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="images/bape.png" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">A Bathing Ape</h5>
+                <p class="card-text">A Bathing Ape (or BAPE) is a Japanese fashion brand founded by Nigo (Tomoaki Nagao)
+                  in Ura-Harajuku in 1993.
+                  The brand specializes in men's, women's and children's lifestyle and street wear, running 19 stores in
+                  Japan, including Bape Stores, Bape Pirate Stores, Bape Kids Stores, Bapexclusive Aoyama, and
+                  Bapexclusive Kyoto.</p>
+                <p class="card-text"><small class="text-body-secondary"><a href="https://bape.com/"
+                      style="color:gray">BAPE Official Website</a></small></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <p class="col-md-4 mb-0 text-muted">&copy; 2023 Drip App</p>
+
+        <a href="/"
+          class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+          <svg class="bi me-2" width="40" height="32">
+            <use xlink:href="#bootstrap" /></svg>
+        </a>
+
+        <ul class="nav col-md-4 justify-content-end">
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Privacy</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Terms</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Contact</a></li>
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-light" type="submit">Search</button>
-        </form>
-      </div>
-    </div>
-  </nav>
-
-  <div id="background" class="main_container">
-    <h3 class="headers">DRIPssociates</h3>
-    <h5 class="headers">None of this would've been possible had it not been for our sponsors.</h5>
-    <h5 class="headers">Here are the links to our three main sponsors!</h5>
-    <div id="DRIPssociate_cards">
-    <div class="card mb-3" style="max-width: 540px;">
-      <div class="row g-0">
-        <div class="col-md-4">
-          <img src="images/supremelogo.jpg" class="img-fluid rounded-start" alt="...">
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">Supreme New York</h5>
-            <p class="card-text">Supreme is an American clothing and skateboarding lifestyle brand established in New York City in April 1994.
-              The brand aims to appeal to youth culture in general as well as the skateboarding and hip hop scenes specifically. The company makes skateboards in addition to clothing and accessories.
-              The red box logo with "Supreme" in white Futura Heavy Oblique is thought to be largely based on Barbara Kruger's art.</p>
-            <p class="card-text"><small class="text-body-secondary"><a href="https://us.supreme.com/" style="color: gray">Supreme Official Website</a></small></p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card mb-3" style="max-width: 540px;">
-      <div class="row g-0">
-        <div class="col-md-4">
-          <img src="images/palacelogo.jpg" class="img-fluid rounded-start" alt="...">
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">Palace Skateboards</h5>
-            <p class="card-text">Palace Skateboards (or Palace) is a London-based skateboarding and clothing brand established in 2009. The brand was founded by Levent Tanju and his skate team, the Palace Wayward Boys Choir, along with Gareth Skewis.
-               Palace focuses on skatewear with heavy 90s and pop culture influences alongside VHS style clothing advertisements.
-              The skate team promotes their branded content and skate videos. Palace has flagship stores in London, New York, Los Angeles and Tokyo.</p>
-            <p class="card-text"><small class="text-body-secondary"><a href="https://www.palaceskateboards.com/" style="color:gray">Palace Official Website</a></small></p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card mb-3" style="max-width: 540px;">
-      <div class="row g-0">
-        <div class="col-md-4">
-          <img src="images/bape.png" class="img-fluid rounded-start" alt="...">
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">A Bathing Ape</h5>
-            <p class="card-text">A Bathing Ape (or BAPE) is a Japanese fashion brand founded by Nigo (Tomoaki Nagao) in Ura-Harajuku in 1993.
-              The brand specializes in men's, women's and children's lifestyle and street wear, running 19 stores in Japan, including Bape Stores, Bape Pirate Stores, Bape Kids Stores, Bapexclusive Aoyama, and Bapexclusive Kyoto.</p>
-            <p class="card-text"><small class="text-body-secondary"><a href="https://bape.com/" style="color:gray">BAPE Official Website</a></small></p>
-          </div>
-        </div>
-      </div>
-    </div>
+      </footer>
     </div>
   </div>
-
-  <div class="footer">
-    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-      <p class="col-md-4 mb-0 text-muted">&copy; 2023 Drip App</p>
-
-      <a href="/"
-        class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-        <svg class="bi me-2" width="40" height="32">
-          <use xlink:href="#bootstrap" /></svg>
-      </a>
-
-      <ul class="nav col-md-4 justify-content-end">
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Privacy</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Terms</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Contact</a></li>
-      </ul>
-    </footer>
-  </div>
-
   <!---------------------------------------------->
   <!-- Your own JavaScript functions go here    -->
   <!---------------------------------------------->
