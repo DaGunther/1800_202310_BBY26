@@ -25,7 +25,7 @@ function insertCityFromFirestore() {
                 console.log( userDoc.data().City )
                 userCity = userDoc.data().City;
                 console.log( userName )
-                document.getElementById( "city-goes-here" ).innerHTML = userCity;
+                document.getElementById( "City-goes-here" ).innerHTML = userCity;
 
             } )
         }
