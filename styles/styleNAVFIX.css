@@ -1,0 +1,263 @@
+body {
+    padding-left: 10%;
+    padding-right: 10%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#welcome {
+    background-color: transparent;
+    grid-area: login;
+    text-align: center;
+    color: aliceblue;
+}
+
+#background {
+    background-size: cover;
+}
+.main_container {
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 0;
+}
+
+/* 
+.main_container {
+    background-image: url(https://images.unsplash.com/photo-1587701712213-826b561028f7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1942&q=80);
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-rows: 25%, 50%, 50%, 10%;
+    grid-gap: 0.5rem;
+    grid-template-areas:
+        "nav nav nav nav nav"
+        "logo logo logo logo logo"
+        "login login login login login"
+        "footer footer footer footer footer";
+} */
+
+.card_container {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.card {
+    margin: 25px;
+}
+
+#DRIPssociate_cards {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    flex-direction: row;
+}
+
+a:link {
+    color: gray;
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    color: aliceblue;
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+
+.navbar {
+    grid-area: nav;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.footer {
+    grid-area: footer;
+    /* display: flex; */
+    margin-top: auto;
+}
+
+.rating1 {
+    display: flex;
+    align-items: flex-start;
+    font-size: 1.5rem;
+    color: #d3d3d3;
+}
+
+.rating1 input[type="radio"] {
+    display: none;
+}
+
+
+.rating1 label {
+    color: #ffc600;
+    cursor: pointer;
+    padding: 0 0.25rem;
+}
+
+.rating1 label:hover {
+    background-color: skyblue;
+}
+
+
+
+
+
+.rating2 {
+    display: flex;
+    align-items: flex-start;
+    font-size: 1.5rem;
+    color: #d3d3d3;
+}
+
+.rating2 input[type="radio"] {
+    display: none;
+}
+
+
+.rating2 label {
+    color: #ffc600;
+    cursor: pointer;
+    padding: 0 0.25rem;
+}
+
+.rating2 label:hover {
+    background-color: skyblue;
+}
+
+
+
+
+
+.rating3 {
+    display: flex;
+    align-items: flex-start;
+    font-size: 1.5rem;
+    color: #d3d3d3;
+}
+
+.rating3 input[type="radio"] {
+    display: none;
+}
+
+
+.rating3 label {
+    color: #ffc600;
+    cursor: pointer;
+    padding: 0 0.25rem;
+}
+
+.rating3 label:hover {
+    background-color: skyblue;
+}
+
+
+
+#logo {
+    grid-area: logo;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+#logo img {
+    max-width: 500px;
+    max-height: 30vh;
+}
+
+#login_button {
+    color: aliceblue;
+    text-decoration: none;
+}
+
+@media (max-width : 1000px) {
+    body {
+        line-height: 1rem;
+    }
+
+    .frontFace h1 {
+        font-size: 0.8rem;
+        line-height: 2.5rem;
+    }
+
+    .backFace i {
+        font-size: 2rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .backFace h1,
+    .backFace h2 {
+        font-size: 1rem;
+        margin: 0.2rem;
+    }
+
+    .backFace small {
+        font-size: 0.5rem;
+        font-weight: bold;
+        padding: 0.2rem 0.5rem;
+        margin: 0 0 0.2rem 0;
+    }
+
+    .backFace small:hover {
+        background-color: #43545c;
+        color: #ffffff;
+    }
+
+    .backFace small span {
+        font-size: 0.7rem;
+    }
+
+    .backFace h4 {
+        font-size: 0.4rem;
+    }
+
+    footer {
+        font-size: 0.5rem;
+        padding-top: 0.5rem;
+    }
+
+    footer.love {
+        font-size: 0.5rem;
+    }
+
+    .card_container {
+        display: flex;
+        align-items: stretch;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .main_container {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    #DRIPssociate_cards {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .headers {
+        text-align: center;
+    }
+}
