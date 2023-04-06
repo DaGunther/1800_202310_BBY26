@@ -28,7 +28,7 @@ function getWeather(lat, lon) {
       if (weather === "Clear") {
         background.style.backgroundImage = "url(images/sunny.jpg)";
       } else if (weather === "Rain") {
-        background.style.backgroundImage = "url(images/rainy.jpg)";
+        background.style.backgroundImage = "url(images/clouds.jpg)";
       } else if (weather === "Clouds") {
         background.style.backgroundImage = "url(images/clouds.png)";
       } else {
