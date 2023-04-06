@@ -51,7 +51,7 @@ function getWeather(lat, lon) {
         if (weather === "Clear") {
           container.style.backgroundImage = "url(images/sunny.jpg)";
         } else if (weather === "Rain") {
-          container.style.backgroundImage = "url(images/rainy.jpg)";
+          container.style.backgroundImage = "url(images/clouds.png)";
         } else if (weather === "Clouds") {
           container.style.backgroundImage = "url(images/clouds.png)";
         } else {
